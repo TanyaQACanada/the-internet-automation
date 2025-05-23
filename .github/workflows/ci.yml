@@ -30,7 +30,7 @@ jobs:
     
     - name: Run RSpec tests with Allure
       run: |
-        bundle exec rspec --format AllureRspecFormatter --out reports/allure-results --format documentation
+        bundle exec rspec
     
     - name: Upload Allure results
       uses: actions/upload-artifact@v4

@@ -13,6 +13,13 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'allure-rspec'
+
+AllureRspec.configure do |config|
+  config.results_directory = "reports/allure-results-#{Time.now.to_i}"
+  config.clean_results_directory = true
+end
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -97,4 +104,19 @@ RSpec.configure do |config|
 =end
 
   config.default_formatter = 'documentation'
+
+  config.after(:each) do |example|
+    if example.exception
+      # Add screenshot on failure
+      if page.driver.browser.respond_to?(:save_screenshot)
+        screenshot = page.driver.browser.save_screenshot("reports/allure-results/screenshot-#{Time.now.to_i}.png")
+        Allure.add_attachment(
+          name: "Screenshot",
+          source: File.read(screenshot),
+          type: Allure::ContentType::PNG,
+          test_case: true
+        )
+      end
+    end
+  end
 end
