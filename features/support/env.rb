@@ -16,7 +16,14 @@ Before do
   options.add_argument('--disable-infobars')
   options.add_argument('--start-maximized')
   
-  options.binary = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+  # Set Chrome binary path based on environment
+  if ENV['CI']
+    # CI environment (Ubuntu)
+    options.binary = '/usr/bin/google-chrome'
+  else
+    # Local environment (MacOS)
+    options.binary = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+  end
   
   @driver = Selenium::WebDriver.for :chrome, options: options
   @driver.manage.timeouts.implicit_wait = 10
