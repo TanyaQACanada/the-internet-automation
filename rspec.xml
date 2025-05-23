@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="rspec" tests="4" skipped="0" failures="0" errors="0" time="0.335774" timestamp="2025-05-23T20:29:01+00:00" hostname="fv-az1285-178">
+<properties>
+<property name="seed" value="42312"/>
+</properties>
+<testcase classname="spec.restful_booker_spec" name="Restful Booker API retrieves the created booking" file="./spec/restful_booker_spec.rb" time="0.046204"></testcase>
+<testcase classname="spec.restful_booker_spec" name="Restful Booker API updates the booking" file="./spec/restful_booker_spec.rb" time="0.036717"></testcase>
+<testcase classname="spec.restful_booker_spec" name="Restful Booker API deletes the booking" file="./spec/restful_booker_spec.rb" time="0.050475"></testcase>
+<testcase classname="spec.restful_booker_spec" name="Restful Booker API returns 404 after deletion" file="./spec/restful_booker_spec.rb" time="0.047057"></testcase>
+</testsuite>
