@@ -3,6 +3,20 @@
 This project contains automated tests for The Internet website and Restful Booker API using both RSpec and Cucumber frameworks.
 
 [![CI](https://github.com/TanyaQACanada/the-internet-automation/actions/workflows/ci.yml/badge.svg)](https://github.com/TanyaQACanada/the-internet-automation/actions/workflows/ci.yml)
+[![RSpec Report](https://img.shields.io/badge/RSpec%20Report-Latest-blue)](https://tanyaqacanada.github.io/the-internet-automation/)
+[![Cucumber Report](https://img.shields.io/badge/Cucumber%20Report-Latest-green)](https://reports.cucumber.io)
+
+## Latest Test Results
+<details>
+<summary>Click to view latest test results</summary>
+
+### RSpec Results
+[View Latest RSpec Report](https://tanyaqacanada.github.io/the-internet-automation/)
+
+### Cucumber Results
+[View Latest Cucumber Report](https://reports.cucumber.io)
+
+</details>
 
 ## Quick Start - Running Tests
 
