@@ -17,9 +17,14 @@ When('I click the logout button') do
   @secure_area = SecureAreaPage.new(@driver) unless @secure_area
   @wait.until { @secure_area.logout_button.displayed? }
   @secure_area.click_logout
+  @wait.until { !@driver.current_url.include?(SecureAreaPage::URL_FRAGMENT) }
 end
 
 Then('I should be back on the login page') do
-  @wait.until { @driver.current_url.end_with?(LoginPage::URL) }
-  expect(@driver.current_url).to end_with(LoginPage::URL)
+  begin
+    @wait.until { @driver.current_url.end_with?(LoginPage::URL) }
+    expect(@driver.current_url).to end_with(LoginPage::URL)
+  rescue Selenium::WebDriver::Error::TimeoutError
+    raise "Failed to return to login page. Current URL: #{@driver.current_url}"
+  end
 end

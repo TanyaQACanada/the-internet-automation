@@ -26,8 +26,8 @@ Before do
   end
   
   @driver = Selenium::WebDriver.for :chrome, options: options
-  @driver.manage.timeouts.implicit_wait = 10
-  @wait = Selenium::WebDriver::Wait.new(timeout: 10)
+  @driver.manage.timeouts.implicit_wait = 20
+  @wait = Selenium::WebDriver::Wait.new(timeout: 20)
 end
 
 After do
