@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 jobs:
-  test:
+  api_tests:
     runs-on: ubuntu-latest
     
     steps:
@@ -39,6 +39,9 @@ jobs:
       run: |
         bundle exec rspec
     
+    - name: List Allure results
+      run: ls -l reports/allure-results
+    
     - name: Generate Allure Report
       run: |
         allure generate reports/allure-results --clean -o reports/allure-report
@@ -64,7 +67,15 @@ jobs:
         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         projectName: the-internet-automation
         directory: reports/allure-report
+
+  bdd_tests:
+    runs-on: ubuntu-latest
     
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
     - name: Run Cucumber tests
       env:
         CI: true
