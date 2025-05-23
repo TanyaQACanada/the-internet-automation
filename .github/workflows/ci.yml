@@ -34,6 +34,11 @@ jobs:
         tar -zxvf allure-2.27.0.tgz
         sudo mv allure-2.27.0 /opt/allure
         sudo ln -s /opt/allure/bin/allure /usr/bin/allure
+
+    - name: Ensure Allure results is a directory
+      run: |  
+        if [ -f reports/allure-results ]; then rm reports/allure-results; fi
+        mkdir -p reports/allure-results
     
     - name: Run RSpec tests with Allure
       run: |
@@ -83,7 +88,7 @@ jobs:
     
     - name: Set up Chrome
       uses: browser-actions/setup-chrome@v1
-      
+
     - name: Run Cucumber tests
       env:
         CI: true
