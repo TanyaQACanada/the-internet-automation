@@ -5,4 +5,7 @@ gem 'selenium-webdriver', '~> 4.0'
 gem 'rspec'                
 gem 'webdrivers'           
 gem 'page-object'          
-gem 'ffi'                  
+gem 'ffi'
+gem 'httparty'
+gem 'json'
+
