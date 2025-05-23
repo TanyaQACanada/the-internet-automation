@@ -104,7 +104,8 @@ This project uses Allure for RSpec test reporting:
 2. For CI/CD:
    - Allure results are automatically generated
    - Results are uploaded as artifacts after each CI run
-   - Download the `allure-results` artifact to view the report locally
+   - Reports are automatically deployed to Cloudflare Pages
+   - View the latest report at: [Allure Report](https://the-internet-automation.pages.dev)
 
 ## Prerequisites
 

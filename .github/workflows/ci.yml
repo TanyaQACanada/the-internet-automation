@@ -32,12 +32,32 @@ jobs:
       run: |
         bundle exec rspec
     
+    - name: Generate Allure Report
+      run: |
+        allure generate reports/allure-results --clean -o reports/allure-report
+    
     - name: Upload Allure results
       uses: actions/upload-artifact@v4
       with:
         name: allure-results
         path: reports/allure-results
         retention-days: 5
+
+    - name: Upload Allure report
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-report
+        path: reports/allure-report
+        retention-days: 5
+
+    - name: Deploy to Cloudflare Pages
+      uses: cloudflare/pages-action@v1
+      with:
+        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        projectName: the-internet-automation
+        directory: reports/allure-report
+        gitHubToken: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Run Cucumber tests
       env:
