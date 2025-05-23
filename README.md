@@ -48,7 +48,9 @@ Run tests with specific tags:
 bundle exec cucumber --tags @tag_name
 ```
 
-## Cucumber Reports
+## Test Reports
+
+### Cucumber Reports
 
 This project uses Cucumber's reporting service. To enable report publishing:
 
@@ -64,6 +66,22 @@ This project uses Cucumber's reporting service. To enable report publishing:
 2. For CI/CD:
    - The token is stored as a GitHub secret
    - Reports are automatically published when running in CI
+   - View reports at: [Cucumber Reports](https://reports.cucumber.io)
+
+### RSpec Reports
+
+This project generates and publishes RSpec test reports:
+
+1. For local development:
+   ```bash
+   # Generate XML report
+   bundle exec rspec --format RspecJunitFormatter --out reports/rspec.xml
+   ```
+
+2. For CI/CD:
+   - XML reports are automatically generated
+   - Reports are published to GitHub Pages after each CI run
+   - View latest report at: [RSpec Reports](https://tanyaqacanada.github.io/the-internet-automation/)
 
 ## Prerequisites
 
@@ -102,6 +120,7 @@ bundle install
 - cucumber (~> 8.0)
 - selenium-webdriver (~> 4.0)
 - rspec
+- rspec_junit_formatter
 - webdrivers
 - page-object
 - ffi

@@ -24,7 +24,18 @@ jobs:
       uses: browser-actions/setup-chrome@v1
     
     - name: Run RSpec tests
-      run: bundle exec rspec --format documentation
+      run: |
+        mkdir -p reports
+        bundle exec rspec --format RspecJunitFormatter --out reports/rspec.xml --format documentation
+    
+    - name: Deploy RSpec Report
+      uses: peaceiris/actions-gh-pages@v3
+      if: always()
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./reports
+        publish_branch: gh-pages
+        commit_message: "Update RSpec report"
     
     - name: Run Cucumber tests
       env:
