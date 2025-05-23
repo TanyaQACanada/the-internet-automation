@@ -28,6 +28,11 @@ jobs:
     - name: Set up Chrome
       uses: browser-actions/setup-chrome@v1
     
+    - name: Install Allure CLI
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y allure
+    
     - name: Run RSpec tests with Allure
       run: |
         bundle exec rspec
