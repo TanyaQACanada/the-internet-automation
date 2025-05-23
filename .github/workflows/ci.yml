@@ -33,15 +33,18 @@ jobs:
         mkdir -p reports
         bundle exec rspec --format RspecJunitFormatter --out reports/rspec.xml --format documentation
     
-    - name: Deploy RSpec Report
-      uses: peaceiris/actions-gh-pages@v4
-      if: always()
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+    
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./reports
-        publish_branch: gh-pages
-        commit_message: "Update RSpec report"
-        force_orphan: true
+        path: ./reports
+    
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
+      if: always()
     
     - name: Run Cucumber tests
       env:
