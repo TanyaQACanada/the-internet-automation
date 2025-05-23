@@ -17,7 +17,7 @@ require 'allure-rspec'
 require 'rspec/retry'
 
 AllureRspec.configure do |config|
-  config.results_directory = "reports/allure-results-#{Time.now.to_i}"
+  config.results_directory = "reports/allure-results"
   config.clean_results_directory = true
 end
 
