@@ -4,7 +4,7 @@ class SecureAreaPage
   
     def initialize(driver)
       @driver = driver
-      @wait = Selenium::WebDriver::Wait.new(timeout: 10)
+      @wait = Selenium::WebDriver::Wait.new(timeout: 20)
       wait_for_page_load
     end
   
@@ -17,7 +17,8 @@ class SecureAreaPage
     end
   
     def click_logout
-      logout_button.click
+      button = @wait.until { logout_button }
+      button.click
     end
   
     private

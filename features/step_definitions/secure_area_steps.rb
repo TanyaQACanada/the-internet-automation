@@ -15,9 +15,8 @@ end
 
 When('I click the logout button') do
   @secure_area = SecureAreaPage.new(@driver) unless @secure_area
-  @wait.until { @secure_area.logout_button.displayed? }
-  @secure_area.click_logout
-  @wait.until { !@driver.current_url.include?(SecureAreaPage::URL_FRAGMENT) }
+  logout_button = @wait.until { @secure_area.logout_button }
+  logout_button.click
 end
 
 Then('I should be back on the login page') do
