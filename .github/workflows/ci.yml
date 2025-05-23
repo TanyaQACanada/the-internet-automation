@@ -28,9 +28,16 @@ jobs:
     - name: Set up Chrome
       uses: browser-actions/setup-chrome@v1
     
-    - name: Run RSpec tests
+    - name: Run RSpec tests with Allure
       run: |
-        bundle exec rspec --format documentation
+        bundle exec rspec --format AllureRspecFormatter --out reports/allure-results --format documentation
+    
+    - name: Upload Allure results
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-results
+        path: reports/allure-results
+        retention-days: 5
     
     - name: Run Cucumber tests
       env:

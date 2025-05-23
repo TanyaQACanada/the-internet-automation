@@ -8,5 +8,5 @@ gem 'page-object'
 gem 'ffi'
 gem 'httparty'
 gem 'json'
-gem 'rspec_junit_formatter'
+gem 'allure-rspec', '~> 2.23.0'
 
