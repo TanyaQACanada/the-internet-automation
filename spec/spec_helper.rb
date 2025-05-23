@@ -14,6 +14,7 @@
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'allure-rspec'
+require 'rspec/retry'
 
 AllureRspec.configure do |config|
   config.results_directory = "reports/allure-results-#{Time.now.to_i}"
@@ -119,4 +120,11 @@ RSpec.configure do |config|
       end
     end
   end
+
+  # Show retry status in spec process
+  config.verbose_retry = true
+  # Try failed tests up to 3 times
+  config.default_retry_count = 3
+  # Only retry when tests fail, not when they are pending or skipped
+  config.exceptions_to_retry = [StandardError]
 end

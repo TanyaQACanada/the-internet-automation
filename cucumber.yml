@@ -1,0 +1,1 @@
+default: --retry 3

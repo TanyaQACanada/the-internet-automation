@@ -9,4 +9,5 @@ gem 'ffi'
 gem 'httparty'
 gem 'json'
 gem 'allure-rspec', '~> 2.23.0'
+gem 'rspec-retry'
 
