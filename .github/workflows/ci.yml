@@ -64,7 +64,6 @@ jobs:
         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         projectName: the-internet-automation
         directory: reports/allure-report
-        gitHubToken: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Run Cucumber tests
       env:
