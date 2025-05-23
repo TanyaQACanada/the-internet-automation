@@ -4,6 +4,7 @@ This project contains automated tests for The Internet website and Restful Booke
 
 [![CI](https://github.com/TanyaQACanada/the-internet-automation/actions/workflows/ci.yml/badge.svg)](https://github.com/TanyaQACanada/the-internet-automation/actions/workflows/ci.yml)
 [![Cucumber Report](https://img.shields.io/badge/Cucumber%20Report-Latest-green)](https://reports.cucumber.io/report-collections/37702a6c-9a8d-4740-8cc9-eb358c8ce404)
+[![RSpec Report](https://img.shields.io/badge/Allure-Report-blue)](https://the-internet-automation.pages.dev/)
 
 ## Latest Test Results
 <details>
