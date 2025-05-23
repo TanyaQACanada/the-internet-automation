@@ -35,4 +35,5 @@ jobs:
     - name: Run Cucumber tests
       env:
         CI: true
+        CUCUMBER_PUBLISH_TOKEN: ${{ secrets.CUCUMBER_PUBLISH_TOKEN }}
       run: bundle exec cucumber 

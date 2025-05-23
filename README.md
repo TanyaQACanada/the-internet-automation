@@ -48,6 +48,23 @@ Run tests with specific tags:
 bundle exec cucumber --tags @tag_name
 ```
 
+## Cucumber Reports
+
+This project uses Cucumber's reporting service. To enable report publishing:
+
+1. For local development:
+   ```bash
+   # Set the token as an environment variable
+   export CUCUMBER_PUBLISH_TOKEN=your_token_here
+   
+   # Or run Cucumber with the token
+   CUCUMBER_PUBLISH_TOKEN=your_token_here bundle exec cucumber
+   ```
+
+2. For CI/CD:
+   - The token is stored as a GitHub secret
+   - Reports are automatically published when running in CI
+
 ## Prerequisites
 
 - Ruby (latest stable version recommended)
