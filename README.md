@@ -2,6 +2,8 @@
 
 This project contains automated tests for The Internet website and Restful Booker API using both RSpec and Cucumber frameworks.
 
+[![CI](https://github.com/TanyaQACanada/the-internet-automation/actions/workflows/ci.yml/badge.svg)](https://github.com/TanyaQACanada/the-internet-automation/actions/workflows/ci.yml)
+
 ## Quick Start - Running Tests
 
 ### RSpec Tests
@@ -98,4 +100,16 @@ bundle install
 
 ## License
 
-[Add your license information here] 
+[Add your license information here]
+
+## Continuous Integration
+
+This project uses GitHub Actions for continuous integration. The CI pipeline:
+
+- Runs on every push to main branch and pull requests
+- Uses Ubuntu latest as the runner
+- Sets up Ruby 3.2
+- Installs Chrome for Selenium tests
+- Runs both RSpec and Cucumber tests
+
+You can view the CI status and logs in the [Actions tab](https://github.com/TanyaQACanada/the-internet-automation/actions) of the repository. 
