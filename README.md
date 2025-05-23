@@ -3,7 +3,6 @@
 This project contains automated tests for The Internet website and Restful Booker API using both RSpec and Cucumber frameworks.
 
 [![CI](https://github.com/TanyaQACanada/the-internet-automation/actions/workflows/ci.yml/badge.svg)](https://github.com/TanyaQACanada/the-internet-automation/actions/workflows/ci.yml)
-[![RSpec Report](https://img.shields.io/badge/RSpec%20Report-Latest-blue)](https://tanyaqacanada.github.io/the-internet-automation/)
 [![Cucumber Report](https://img.shields.io/badge/Cucumber%20Report-Latest-green)](https://reports.cucumber.io)
 
 ## Latest Test Results
@@ -11,7 +10,10 @@ This project contains automated tests for The Internet website and Restful Booke
 <summary>Click to view latest test results</summary>
 
 ### RSpec Results
-[View Latest RSpec Report](https://tanyaqacanada.github.io/the-internet-automation/)
+To view the latest Allure report:
+1. Download the `allure-results` artifact from the latest CI run
+2. Install Allure command-line tool
+3. Run `allure serve reports/allure-results`
 
 ### Cucumber Results
 [View Latest Cucumber Report](https://reports.cucumber.io)
@@ -36,6 +38,12 @@ bundle exec rspec spec/restful_booker_spec.rb
 Run with documentation format:
 ```bash
 bundle exec rspec --format documentation
+```
+
+Run with Allure report:
+```bash
+bundle exec rspec --format AllureRspecFormatter --out reports/allure-results
+allure serve reports/allure-results
 ```
 
 ### Cucumber Tests
@@ -84,23 +92,25 @@ This project uses Cucumber's reporting service. To enable report publishing:
 
 ### RSpec Reports
 
-This project generates and publishes RSpec test reports:
+This project uses Allure for RSpec test reporting:
 
 1. For local development:
    ```bash
-   # Generate XML report
-   bundle exec rspec --format RspecJunitFormatter --out reports/rspec.xml
+   # Generate Allure report
+   bundle exec rspec --format AllureRspecFormatter --out reports/allure-results
+   allure serve reports/allure-results
    ```
 
 2. For CI/CD:
-   - XML reports are automatically generated
-   - Reports are published to GitHub Pages after each CI run
-   - View latest report at: [RSpec Reports](https://tanyaqacanada.github.io/the-internet-automation/)
+   - Allure results are automatically generated
+   - Results are uploaded as artifacts after each CI run
+   - Download the `allure-results` artifact to view the report locally
 
 ## Prerequisites
 
 - Ruby (latest stable version recommended)
 - Bundler gem (`gem install bundler`)
+- Allure command-line tool (for viewing reports)
 
 ## Setup
 
@@ -113,6 +123,20 @@ cd the-internet-automation
 2. Install dependencies:
 ```bash
 bundle install
+```
+
+3. Install Allure command-line tool:
+```bash
+# macOS
+brew install allure
+
+# Windows
+scoop install allure
+
+# Linux
+sudo apt-add-repository ppa:qameta/allure
+sudo apt-get update
+sudo apt-get install allure
 ```
 
 ## Project Structure
@@ -134,7 +158,7 @@ bundle install
 - cucumber (~> 8.0)
 - selenium-webdriver (~> 4.0)
 - rspec
-- rspec_junit_formatter
+- allure-rspec (~> 2.23.0)
 - webdrivers
 - page-object
 - ffi
@@ -161,5 +185,6 @@ This project uses GitHub Actions for continuous integration. The CI pipeline:
 - Sets up Ruby 3.2
 - Installs Chrome for Selenium tests
 - Runs both RSpec and Cucumber tests
+- Generates Allure reports for RSpec tests
 
 You can view the CI status and logs in the [Actions tab](https://github.com/TanyaQACanada/the-internet-automation/actions) of the repository. 
